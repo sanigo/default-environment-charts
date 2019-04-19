@@ -13,7 +13,7 @@ pipeline {
       steps {
         container('maven') {
           dir('env') {
-            sh 'jx step helm build'
+            sh 'helm init --client-only --stable-repo-url https://helm-stable.jointforce.com && jx step helm build'
           }
         }
       }
@@ -25,7 +25,7 @@ pipeline {
       steps {
         container('maven') {
           dir('env') {
-            sh 'jx step helm apply'
+            sh 'helm init --client-only --stable-repo-url https://helm-stable.jointforce.com && jx step helm apply'
           }
         }
       }
